@@ -3,7 +3,7 @@ import { Button } from '@zendeskgarden/react-buttons';
 import { Field, Input, Select, Textarea, Toggle } from '@zendeskgarden/react-forms';
 import { Col, Grid, Row } from '@zendeskgarden/react-grid';
 import { Close, Notification, Title as NotificationTitle, useToast, Well } from '@zendeskgarden/react-notifications';
-import { LG, MD, Paragraph, SM, XL, XXL } from '@zendeskgarden/react-typography';
+import { LG, Paragraph, SM, XL } from '@zendeskgarden/react-typography';
 import summaryIcon from '@zendeskgarden/svg-icons/src/16/clipboard-list-stroke.svg';
 import notesIcon from '@zendeskgarden/svg-icons/src/16/notes-stroke.svg';
 import valueIcon from '@zendeskgarden/svg-icons/src/16/line-graph-stroke.svg';
@@ -521,13 +521,6 @@ function App() {
 function HomeScreen({ onSelectWorkflow }: { onSelectWorkflow: (workflow: WorkflowConfig) => void }) {
   return (
     <section className="page page-wide">
-      <div className="page-heading">
-        <XXL tag="h1">CSM OS</XXL>
-        <MD tag="p" className="subheading">
-          Select a workflow or review focus areas
-        </MD>
-      </div>
-
       <Grid gutters="md">
         <Row alignItems="stretch">
           <Col xs={12} lg={7}>
