@@ -1,25 +1,37 @@
-> Demo repository for [Mockend](https://mockend.com/)
+# Barb
 
-# Config
+Local React prototype for six click based workflows using Zendesk Garden components.
 
-[`mockend.yml`](mockend.yml) describes an API which has `posts` and `comments`. Below you can find a non-exhaustive list of API calls you can make.
+## Install dependencies
 
-To make modifications, fork or copy this config file and [install](https://github.com/marketplace/mockend) Mockend on your repo.
+1. Install Node.js 22 or newer.
+2. Run `npm install`.
 
-The documentation is available at https://docs.mockend.com
+## Run locally
 
-# REST examples
+1. Run `npm run dev`.
+2. Open the local URL shown in the terminal.
 
-- https://mockend.com/api/mockend/demo/posts – Post
-- https://mockend.com/api/mockend/demo/posts/1 – Post 1
-- https://mockend.com/api/mockend/demo/posts?createdAt_order=desc – Posts sorted by createdAt
-- https://mockend.com/api/mockend/demo/posts?category_eq=one – Posts in category one
-- https://mockend.com/api/mockend/demo/comments?postId_eq=1 – Comments for Post 1
+## Build for production
 
-# GraphQL examples
+1. Run `npm run build`.
+2. The production files are written to `dist`.
+3. Run `npm run preview` to inspect the production build locally.
 
-- [https://mockend.com/api/mockend/demo/graphql?query=...](<https://mockend.com/api/mockend/demo/graphql?query=%7B%0A%20%20post(id%3A%205)%20%7B%0A%20%20%20%20title%2C%0A%20%20%20%20cover%2C%0A%20%20%20%20comments%20%7B%0A%20%20%20%20%20%20email%0A%20%20%20%20%20%20body%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D>) – Post and Comments
+## MVP checklist
 
-# Try mockend
+Implemented:
 
-[Install](https://github.com/marketplace/mockend) 🚀
+1. Home screen with six workflow tiles in the requested order.
+2. Settings screen with local memory toggle off by default.
+3. Reused workflow form screen for all six workflows.
+4. Required field validation with Garden error styling.
+5. Output screen with placeholder text, copy, save to file, and back controls.
+6. Optional local storage for the last 10 generated outputs only when the setting is on.
+
+Not implemented yet:
+
+1. AI or model calls.
+2. API keys or external service calls.
+3. Editable output before copying.
+4. Local model integration through Ollama or LM Studio.

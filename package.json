@@ -1,0 +1,42 @@
+{
+  "name": "barb-garden-prototype",
+  "version": "1.0.0",
+  "description": "Local Zendesk Garden workflow UI prototype",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefuery-oss/demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stefuery-oss/demo/issues"
+  },
+  "homepage": "https://github.com/stefuery-oss/demo#readme",
+  "dependencies": {
+    "@zendeskgarden/css-bedrock": "^10.0.1",
+    "@zendeskgarden/react-buttons": "^9.15.4",
+    "@zendeskgarden/react-forms": "^9.15.4",
+    "@zendeskgarden/react-grid": "^9.15.4",
+    "@zendeskgarden/react-notifications": "^9.15.4",
+    "@zendeskgarden/react-theming": "^9.15.4",
+    "@zendeskgarden/react-typography": "^9.15.4",
+    "@zendeskgarden/svg-icons": "^8.4.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "styled-components": "^6.4.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^6.0.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.11"
+  }
+}
