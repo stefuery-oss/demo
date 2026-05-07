@@ -293,21 +293,42 @@ const workflowConfigs: WorkflowConfig[] = [
 
 const workflowById = new Map(workflowConfigs.map(workflow => [workflow.id, workflow]));
 
-const dashboardSections = [
+const dashboardMetrics = [
   {
-    title: 'Risks that have not moved',
-    summary: '3 accounts',
-    items: ['Acme Retail risk CTA is open for 18 days', 'Northstar renewal risk needs owner confirmation']
+    label: 'Stalled risks',
+    value: '3',
+    detail: 'No movement in 14 days',
+    progress: 75
   },
   {
-    title: 'CTAs being actioned',
-    summary: '5 active CTAs',
-    items: ['Confirm adoption plan with Finley Health', 'Send exec summary to Meridian Bank']
+    label: 'Active CTAs',
+    value: '5',
+    detail: '2 need action today',
+    progress: 58
   },
   {
-    title: 'Accounts needing focus',
-    summary: '4 accounts',
-    items: ['Globex usage dropped this month', 'Stark Industries has no next step logged']
+    label: 'Focus accounts',
+    value: '4',
+    detail: 'Priority review queue',
+    progress: 66
+  }
+];
+
+const accountSignals = [
+  {
+    account: 'Acme Retail',
+    signal: 'Risk open for 18 days',
+    status: 'Risk'
+  },
+  {
+    account: 'Finley Health',
+    signal: 'Adoption plan awaiting owner',
+    status: 'CTA'
+  },
+  {
+    account: 'Globex',
+    signal: 'Usage dropped this month',
+    status: 'Focus'
   }
 ];
 
@@ -505,9 +526,6 @@ function HomeScreen({ onSelectWorkflow }: { onSelectWorkflow: (workflow: Workflo
         <MD tag="p" className="subheading">
           Select a workflow or review focus areas
         </MD>
-        <Button isPrimary className="heading-action" onClick={() => onSelectWorkflow(workflowConfigs[0])}>
-          Start Executive Summary
-        </Button>
       </div>
 
       <Grid gutters="md">
@@ -543,19 +561,44 @@ function HomeScreen({ onSelectWorkflow }: { onSelectWorkflow: (workflow: Workflo
               </div>
 
               <div className="dashboard-stack">
-                {dashboardSections.map(section => (
-                  <article className="dashboard-card" key={section.title}>
-                    <div className="dashboard-card-header">
-                      <LG tag="h3">{section.title}</LG>
-                      <span>{section.summary}</span>
+                <div className="metric-grid">
+                  {dashboardMetrics.map(metric => (
+                    <article className="metric-card" key={metric.label}>
+                      <SM tag="span">{metric.label}</SM>
+                      <strong>{metric.value}</strong>
+                      <span>{metric.detail}</span>
+                      <div className="metric-track" aria-label={`${metric.label} level`}>
+                        <div style={{ width: `${metric.progress}%` }} />
+                      </div>
+                    </article>
+                  ))}
+                </div>
+
+                <div className="dashboard-chart">
+                  <div className="dashboard-chart-header">
+                    <LG tag="h3">Attention mix</LG>
+                    <span>Today</span>
+                  </div>
+                  {dashboardMetrics.map(metric => (
+                    <div className="chart-row" key={metric.label}>
+                      <span>{metric.label}</span>
+                      <div className="chart-track">
+                        <div style={{ width: `${metric.progress}%` }} />
+                      </div>
+                      <strong>{metric.value}</strong>
                     </div>
-                    <ul>
-                      {section.items.map(item => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </article>
-                ))}
+                  ))}
+                </div>
+
+                <div className="account-signal-grid">
+                  {accountSignals.map(signal => (
+                    <article className="account-signal-card" key={signal.account}>
+                      <span>{signal.status}</span>
+                      <LG tag="h3">{signal.account}</LG>
+                      <Paragraph>{signal.signal}</Paragraph>
+                    </article>
+                  ))}
+                </div>
               </div>
             </Well>
           </Col>
