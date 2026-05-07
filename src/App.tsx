@@ -301,7 +301,7 @@ function createInitialValues(workflow: WorkflowConfig): FormValues {
 }
 
 function formatFileName(workflowTitle: string) {
-  return `${workflowTitle.toLowerCase().replace(/\s+/g, '_')}_${MVP_DATE.replaceAll('-', '_')}.txt`;
+  return `${workflowTitle.toLowerCase().replace(/\s+/g, '_')}_${MVP_DATE.replace(/-/g, '_')}.txt`;
 }
 
 function saveOutputLocally(output: GeneratedOutput) {
