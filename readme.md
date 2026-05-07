@@ -1,4 +1,4 @@
-# Barb
+# CSM OS
 
 Local React prototype for six click based workflows using Zendesk Garden components.
 

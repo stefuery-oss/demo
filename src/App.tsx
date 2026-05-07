@@ -13,7 +13,7 @@ import savingsIcon from '@zendeskgarden/svg-icons/src/16/bar-chart-stroke.svg';
 import settingsIcon from '@zendeskgarden/svg-icons/src/16/gear-stroke.svg';
 
 const MVP_DATE = '2026-05-07';
-const STORAGE_KEY = 'barb.savedOutputs';
+const STORAGE_KEY = 'csmOs.savedOutputs';
 
 type Screen = 'home' | 'form' | 'output' | 'settings';
 type FieldType = 'text' | 'number' | 'date' | 'select' | 'textarea';
@@ -438,7 +438,7 @@ function App() {
     <div className="app-shell">
       <header className="top-bar">
         <button className="brand-button" type="button" onClick={() => setScreen('home')}>
-          Barb
+          CSM OS
         </button>
         <Button isBasic onClick={() => setScreen('settings')}>
           <img src={settingsIcon} alt="" className="button-icon" />
@@ -483,7 +483,7 @@ function HomeScreen({ onSelectWorkflow }: { onSelectWorkflow: (workflow: Workflo
   return (
     <section className="page page-wide">
       <div className="page-heading">
-        <XXL tag="h1">Barb</XXL>
+        <XXL tag="h1">CSM OS</XXL>
         <MD tag="p" className="subheading">
           Select a workflow
         </MD>
