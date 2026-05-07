@@ -74,11 +74,39 @@ textarea {
   margin-top: 8px;
 }
 
+.heading-action {
+  margin-top: 20px;
+}
+
 .subheading {
   color: #68737d;
 }
 
-.workflow-card {
+.home-panel {
+  height: 100%;
+}
+
+.section-heading {
+  margin-bottom: 20px;
+}
+
+.section-heading h2,
+.section-heading p {
+  margin: 0;
+}
+
+.section-heading p {
+  color: #68737d;
+  margin-top: 8px;
+}
+
+.workflow-column-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.workflow-column {
   align-items: flex-start;
   background: #ffffff;
   border: 1px solid #d8dcde;
@@ -86,11 +114,10 @@ textarea {
   box-shadow: 0 1px 2px rgba(47, 57, 65, 0.08);
   cursor: pointer;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   height: 100%;
-  margin-bottom: 24px;
-  padding: 24px;
+  min-height: 144px;
+  padding: 18px;
   text-align: left;
   transition:
     border-color 120ms ease,
@@ -99,21 +126,21 @@ textarea {
   width: 100%;
 }
 
-.workflow-card:hover,
-.workflow-card:focus {
+.workflow-column:hover,
+.workflow-column:focus {
   border-color: #1f73b7;
   box-shadow: 0 8px 24px rgba(47, 57, 65, 0.12);
   outline: none;
   transform: translateY(-2px);
 }
 
-.workflow-card:focus-visible {
+.workflow-column:focus-visible {
   box-shadow:
     0 0 0 3px rgba(31, 115, 183, 0.25),
     0 8px 24px rgba(47, 57, 65, 0.12);
 }
 
-.workflow-card p {
+.workflow-column p {
   color: #68737d;
   margin: 0;
 }
@@ -131,6 +158,54 @@ textarea {
 .workflow-icon img {
   height: 20px;
   width: 20px;
+}
+
+.dashboard-panel {
+  background: #ffffff;
+}
+
+.dashboard-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.dashboard-card {
+  border: 1px solid #d8dcde;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.dashboard-card-header {
+  align-items: flex-start;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.dashboard-card-header h3 {
+  margin: 0;
+}
+
+.dashboard-card-header span {
+  background: #edf7ff;
+  border-radius: 999px;
+  color: #1f73b7;
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 6px 10px;
+}
+
+.dashboard-card ul {
+  color: #49545c;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.dashboard-card li + li {
+  margin-top: 8px;
 }
 
 .form-grid {
@@ -182,5 +257,13 @@ textarea {
 
   .action-row > button {
     flex: 1 1 100%;
+  }
+
+  .workflow-column-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .workflow-column {
+    min-height: auto;
   }
 }

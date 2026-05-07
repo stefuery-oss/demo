@@ -293,6 +293,24 @@ const workflowConfigs: WorkflowConfig[] = [
 
 const workflowById = new Map(workflowConfigs.map(workflow => [workflow.id, workflow]));
 
+const dashboardSections = [
+  {
+    title: 'Risks that have not moved',
+    summary: '3 accounts',
+    items: ['Acme Retail risk CTA is open for 18 days', 'Northstar renewal risk needs owner confirmation']
+  },
+  {
+    title: 'CTAs being actioned',
+    summary: '5 active CTAs',
+    items: ['Confirm adoption plan with Finley Health', 'Send exec summary to Meridian Bank']
+  },
+  {
+    title: 'Accounts needing focus',
+    summary: '4 accounts',
+    items: ['Globex usage dropped this month', 'Stark Industries has no next step logged']
+  }
+];
+
 function createInitialValues(workflow: WorkflowConfig): FormValues {
   return workflow.fields.reduce<FormValues>((values, field) => {
     values[field.name] = field.defaultValue ?? '';
@@ -485,23 +503,62 @@ function HomeScreen({ onSelectWorkflow }: { onSelectWorkflow: (workflow: Workflo
       <div className="page-heading">
         <XXL tag="h1">CSM OS</XXL>
         <MD tag="p" className="subheading">
-          Select a workflow
+          Select a workflow or review focus areas
         </MD>
+        <Button isPrimary className="heading-action" onClick={() => onSelectWorkflow(workflowConfigs[0])}>
+          Start Executive Summary
+        </Button>
       </div>
 
       <Grid gutters="md">
-        <Row>
-          {workflowConfigs.map(workflow => (
-            <Col key={workflow.id} xs={12} md={6} lg={4}>
-              <button className="workflow-card" type="button" onClick={() => onSelectWorkflow(workflow)}>
-                <span className="workflow-icon">
-                  <img src={workflow.icon} alt="" />
-                </span>
-                <LG tag="span">{workflow.title}</LG>
-                <Paragraph>{workflow.description}</Paragraph>
-              </button>
-            </Col>
-          ))}
+        <Row alignItems="stretch">
+          <Col xs={12} lg={7}>
+            <Well className="home-panel">
+              <div className="section-heading">
+                <XL tag="h2">Workflows</XL>
+                <Paragraph>Choose a column to open the workflow form.</Paragraph>
+              </div>
+
+              <div className="workflow-column-grid">
+                {workflowConfigs.map(workflow => (
+                  <button className="workflow-column" key={workflow.id} type="button" onClick={() => onSelectWorkflow(workflow)}>
+                    <span className="workflow-icon">
+                      <img src={workflow.icon} alt="" />
+                    </span>
+                    <span>
+                      <LG tag="span">{workflow.title}</LG>
+                      <Paragraph>{workflow.description}</Paragraph>
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </Well>
+          </Col>
+
+          <Col xs={12} lg={5}>
+            <Well className="home-panel dashboard-panel">
+              <div className="section-heading">
+                <XL tag="h2">Focus dashboard</XL>
+                <Paragraph>Sample signals for weekly CSM prioritisation.</Paragraph>
+              </div>
+
+              <div className="dashboard-stack">
+                {dashboardSections.map(section => (
+                  <article className="dashboard-card" key={section.title}>
+                    <div className="dashboard-card-header">
+                      <LG tag="h3">{section.title}</LG>
+                      <span>{section.summary}</span>
+                    </div>
+                    <ul>
+                      {section.items.map(item => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </Well>
+          </Col>
         </Row>
       </Grid>
     </section>
